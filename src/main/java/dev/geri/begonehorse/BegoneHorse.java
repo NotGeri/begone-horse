@@ -17,11 +17,12 @@ import org.slf4j.LoggerFactory;
 public class BegoneHorse implements ClientModInitializer {
 
     private static final Logger logger = LoggerFactory.getLogger("BegoneHorse");
-    private static boolean headless = true;
+    private static HoarsState state;
 
     @Override
     public void onInitializeClient() {
         logger.info("Registering hoarss");
+        state = HoarsState.NORMAL;
 
         KeyBinding keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.begonehorse.toggle",
@@ -37,18 +38,66 @@ public class BegoneHorse implements ClientModInitializer {
 
             // Check if it was pressed
             if (keyBinding.wasPressed()) {
-                player.sendMessage(Text.translatable(headless ? "begonehorse.chat.hoarsback" : "begonehorse.chat.hoarsgon"));
-                headless = !headless;
+
+                HoarsState nextState = state.getNext();
+
+                player.sendMessage(Text.translatable("begonehorse.chat." + nextState.name().toLowerCase()));
+                state = nextState;
             }
 
         });
     }
 
     /**
-     * @return Weather horse heads should be rendered
+     * @return Get the current {@link HoarsState} of the mod
      */
-    public static boolean isHeadless() {
-        return headless;
+    public static HoarsState getState() {
+        return state;
+    }
+
+    public enum HoarsState {
+
+        NORMAL,
+        HEADLESS,
+        TAIL,
+        HEADED,
+        GON;
+
+        /**
+         * Should a certain part of a hoars be rendered?
+         *
+         * @param partName The name of the body part
+         * @return Whether it should be rendered client-side
+         */
+        public boolean shouldPartBeRendered(String partName) {
+            switch (partName) {
+
+                // Hoars head
+                case "head" -> {
+                    if (this == HEADLESS) return false;
+                    if (this == GON) return false;
+                    if (this == TAIL) return false;
+                }
+
+                // Hoars body
+                case "body" -> {
+                    if (this == GON) return false;
+                    if (this == TAIL) return false;
+                    if (this == HEADED) return false;
+                }
+
+            }
+
+            return true;
+        }
+
+        /**
+         * @return The next state in line
+         */
+        public HoarsState getNext() {
+            logger.info(this.name());
+            return values()[(this.ordinal() + 1) % values().length];
+        }
     }
 
 }

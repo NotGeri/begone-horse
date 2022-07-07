@@ -1,5 +1,8 @@
 {
   "key.begonehorse.toggle": "Toggle Hoars",
-  "begonehorse.chat.hoarsback": "§aShowing hoars",
-  "begonehorse.chat.hoarsgon": "§cNo longer showing hoars"
+  "begonehorse.chat.normal": "§aShowing normal hoars",
+  "begonehorse.chat.headless": "§eShowing headless hoars",
+  "begonehorse.chat.tail": "§6Showing tailed hoars",
+  "begonehorse.chat.headed": "§cShowing headed hoars",
+  "begonehorse.chat.gon": "§4Hoars gon'"
 }
