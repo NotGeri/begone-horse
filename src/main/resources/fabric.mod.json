@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "begonehorse",
+  "version": "1.0",
+  "name": "BegoneHorse",
+  "description": "Make hoars go away",
+  "authors": [
+    "Geri"
+  ],
+  "contact": {
+    "website": "https://geri.dev",
+    "repo": "https://github.com/notgeri/begonehorse"
+  },
+  "license": "MIT",
+  "icon": "assets/BegoneHorse/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.geri.begonehorse.BegoneHorse"
+    ]
+  },
+  "mixins": [
+    "BegoneHorse.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.19"
+  }
+}
