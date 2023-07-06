@@ -1,11 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "begonehorse",
-  "version": "1.0",
+  "version": "1.2",
   "name": "BegoneHorse",
   "description": "Make hoars go away",
   "authors": [
-    "Geri"
+    "Geri",
+    "Nik/znopp"
   ],
   "contact": {
     "website": "https://geri.dev",
@@ -23,8 +24,8 @@
     "BegoneHorse.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.8",
+    "fabricloader": ">=0.14.21",
     "fabric": "*",
-    "minecraft": "1.19"
+    "minecraft": "1.20"
   }
 }
