@@ -13,7 +13,7 @@
     "repo": "https://github.com/notgeri/begonehorse"
   },
   "license": "MIT",
-  "icon": "assets/BegoneHorse/icon.png",
+  "icon": "assets/begonehorse/icon.png",
   "environment": "client",
   "entrypoints": {
     "client": [
